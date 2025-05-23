@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartAI – From Prompt to Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-dark text-white">
+
+  <!-- 🔄 Loader with Matrix Animation -->
+  <div id="loader" class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-black text-white text-center" style="z-index: 9999;">
+    <canvas id="aiGlow" style="position: absolute; width: 100%; height: 100%; z-index: -1;"></canvas>
+    <img src="images/logo_nbk.png" alt="SmartAI Logo" height="350" class="mb-4 animate-logo" />
+    <div class="fs-3 fw-bold">🧠 SmartAI is Booting Up</div>
+    <div class="display-6 dots glow mt-2"></div>
+  </div>
+
+  <!-- 🔗 Navbar -->
+  <nav class="navbar navbar-dark bg-black px-4 py-3">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/logo.jpg" alt="SmartAI Logo" height="40" class="me-2" />
+      <strong>SmartAI</strong>
+    </a>
+  </nav>
+
+  <!-- 🎥 Hero Section with Intro Video -->
+  <section class="video-section position-relative">
+    <video autoplay muted loop playsinline class="intro-video">
+      <source src="videos/intro_1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- 💡 Main Content Starts -->
+  <div class="content-wrapper position-relative">
+    
+    <!-- 🌌 Particles Background -->
+    <div id="particles-js"></div>
+
+<!-- 🚀 Features Carousel -->
+<section id="features" class="py-5 text-center" style="scroll-margin-top: 100px;">
+  <h2 class="display-5 fw-bold mb-4">Explore SmartAI</h2>
+
+  <div id="feature-carousel-wrapper" class="feature-carousel-wrapper">
+    <div class="carousel-container d-flex flex-nowrap px-5 py-4" id="carouselTrack">
+      <div class="carousel-card" onclick="expandCard(this, 'ai-chat')">
+        <h5>⚡ AI Chat</h5>
+        <p>Instant code from a single prompt. Like magic.</p>
+      </div>
+      <div class="carousel-card" onclick="expandCard(this, 'autocomplete')">
+        <h5>🧠 Autocomplete</h5>
+        <p>AI that finishes your thoughts. Literally.</p>
+      </div>
+      <div class="carousel-card" onclick="expandCard(this, 'refactor')">
+        <h5>🔧 Smart Refactor</h5>
+        <p>Clean code with zero effort. One click.</p>
+      </div>
+      <div class="carousel-card" onclick="expandCard(this, 'tutor')">
+        <h5>📘 Tutor Mode</h5>
+        <p>Learn to code right in your editor. Step-by-step.</p>
+      </div>
+      <div class="carousel-card" onclick="expandCard(this, 'web-ui')">
+        <h5>💻 Web UI to Code</h5>
+        <p>Upload a screenshot or Figma file — get clean, responsive HTML + CSS instantly.</p>
+      </div>
+      <div class="carousel-card" onclick="expandCard(this, 'project-gen')">
+        <h5>🚀 Full Project Generation</h5>
+        <p>From prompt to full-stack project, including boilerplate, auth, routes, and APIs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="expandedCardDetails" class="expanded-card-details mt-4"></div>
+</section>
+
+
+
+    <!-- ⌛ Coming Soon Section -->
+    <section class="coming-soon-section full-glass d-flex flex-column justify-content-center align-items-center text-center py-5">
+      <h2 class="display-2 fw-bold mb-3 text-info" style="letter-spacing: 0.03em;">
+        🚀 SmartAI Updates Incoming
+      </h2>
+      <p class="lead text-light mb-4" style="opacity: 0.92; font-size: 1.5rem;">
+        New features are being engineered. Stay tuned.
+      </p>
+      <div class="futuristic-typing mt-4">
+        <span class="typing-glow-text">Arriving Soon...</span>
+        <span class="typing-cursor"></span>
+      </div>
+    </section>
+
+
+  <!-- ⚓ Footer -->
+  <footer class="bg-dark text-center text-muted py-3">
+    Built in 🇱🇹 Lithuania • Local-first • Privacy-respecting • © SmartAI 2025
+  </footer>
+
+  <!-- 🧩 JavaScript Includes -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script src="js/scripts.js" defer></script>
+
+</body>
+</html>
