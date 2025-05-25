@@ -1,13 +1,25 @@
 // ------------------ Loader fade-out after delay ------------------
 window.addEventListener("DOMContentLoaded", () => {
+  // Prevent scroll on load
+  document.body.classList.add('noscroll');
+
+  // Start fade-out at 1.3 seconds
   setTimeout(() => {
     const loader = document.getElementById("loader");
     if (loader) {
-      loader.style.opacity = "0";
       loader.style.transition = "opacity 0.6s ease-in-out";
-      setTimeout(() => loader.style.display = "none", 600);
+      loader.style.opacity = "0";
     }
-  }, 2100);
+  }, 1300); // 1.3 seconds
+
+  // Remove loader and unlock scroll at 1.9 seconds
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    document.body.classList.remove('noscroll'); // Unlock scroll here
+  }, 1900); // 1.9 seconds
 
   // ------------------ Matrix Glow on Loader Canvas ------------------
   const canvas = document.getElementById("aiGlow");
@@ -97,23 +109,15 @@ window.addEventListener("DOMContentLoaded", () => {
   autoScrollCarousel();
 
   // ------------------ Animate Cards On Scroll ------------------
-const carouselCards = document.querySelectorAll(".carousel-card");
+  const carouselCards = document.querySelectorAll(".carousel-card");
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.3 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.3 });
 
-carouselCards.forEach((el) => observer.observe(el));
+  carouselCards.forEach((el) => observer.observe(el));
 });
-
-// Prevent scroll on load
-document.body.classList.add('noscroll');
-
-// Allow scroll after 2.5 seconds
-setTimeout(() => {
-  document.body.classList.remove('noscroll');
-}, 2500);
