@@ -76,7 +76,31 @@
   <div id="expandedCardDetails" class="expanded-card-details mt-4"></div>
 </section>
 
+<script>
+  function expandCard(cardElement, type) {
+    const detailsContainer = document.getElementById("expandedCardDetails");
+    const descriptions = {
+      "ai-chat": "AI Chat responds to any prompt with instant, clean code.",
+      "autocomplete": "Autocomplete predicts your next line in real-time.",
+      "refactor": "Refactor simplifies, optimizes, and enhances readability.",
+      "tutor": "Tutor explains your code and guides your learning.",
+      "web-ui": "Convert screenshots or Figma into real HTML/CSS instantly.",
+      "project-gen": "Build full-stack projects from a single prompt."
+    };
 
+    const description = descriptions[type] || "More info coming soon.";
+    detailsContainer.innerHTML = `
+      <div class="p-4 mt-3 border rounded bg-dark">
+        <h4 class="text-info">${cardElement.querySelector("h5").innerText}</h4>
+        <p>${description}</p>
+        <button class="btn btn-outline-info mt-3" onclick="closeExpandedCard()">← Back</button>
+      </div>`;
+  }
+
+  function closeExpandedCard() {
+    document.getElementById("expandedCardDetails").innerHTML = "";
+  }
+</script>
 
     <!-- ⌛ Coming Soon Section -->
     <section class="coming-soon-section full-glass d-flex flex-column justify-content-center align-items-center text-center py-5">
