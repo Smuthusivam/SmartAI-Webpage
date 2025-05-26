@@ -68,16 +68,34 @@ window.addEventListener("DOMContentLoaded", () => {
       "web-ui": "Convert screenshots or Figma into real HTML/CSS instantly.",
       "project-gen": "Build full-stack projects from a single prompt."
     };
+    const videos = {
+      "ai-chat": "videos/AIChatSupport.mp4",
+      "autocomplete": "videos/no-prompt-ai.mp4",
+      "refactor": "videos/refactor-demo.mp4",
+      "tutor": "videos/tutor-demo.mp4",
+      "web-ui": "videos/web-ui-demo.mp4",
+      "project-gen": "videos/ProjectGeneration.mp4"
+    };
 
     const description = descriptions[type] || "More info coming soon.";
+    const videoSrc = videos[type] || "";
+
     detailsContainer.innerHTML = `
-      <div class="p-4 mt-3 border rounded bg-dark">
-        <h4 class="text-info">${cardElement.querySelector("h5").innerText}</h4>
+      <div class="p-4 mt-3 border rounded bg-dark d-flex flex-column align-items-center">
+        <h4 class="text-info mb-3">${cardElement.querySelector("h5").innerText}</h4>
         <p>${description}</p>
+        ${videoSrc ? `
+          <video controls autoplay style="max-width: 600px; width: 100%; margin: 24px 0; border-radius: 12px; box-shadow: 0 0 24px #38bdf8;">
+            <source src="${videoSrc}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        ` : ''}
+        <button class="btn btn-outline-info mt-2" onclick="window.closeExpandedCard()">✕ Close</button>
       </div>`;
   }
 
-  window.expandCard = expandCard; // Make globally accessible from HTML
+  // Make function globally accessible
+  window.expandCard = expandCard;
 
   // ------------------ Auto-Scroll Feature Carousel (Infinite Loop) ------------------
   const carouselWrapper = document.getElementById("feature-carousel-wrapper");
@@ -121,3 +139,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   carouselCards.forEach((el) => observer.observe(el));
 });
+
+// ------------------ Global Functions (outside DOMContentLoaded) ------------------
+window.closeExpandedCard = function () {
+  const detailsContainer = document.getElementById("expandedCardDetails");
+
+  // Stop the video if it exists
+  const video = detailsContainer.querySelector("video");
+  if (video) {
+    video.pause(); // Pause the video
+    video.currentTime = 0; // Reset the video to the beginning
+  }
+
+  // Clear the expanded card details
+  detailsContainer.innerHTML = "";
+};
