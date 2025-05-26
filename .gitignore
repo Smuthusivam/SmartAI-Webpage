@@ -1,0 +1,5 @@
+# Ignore everything in the videos folder
+Public/videos/*
+
+# But do NOT ignore this placeholder file
+!Public/videos/.keep
