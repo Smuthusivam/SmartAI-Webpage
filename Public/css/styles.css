@@ -70,6 +70,26 @@ body.noscroll {
   display: block;
 }
 
+@media (max-width: 768px) {
+  .video-section {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 0 !important;
+    display: block;
+  }
+  .intro-video {
+    width: 100vw;
+    height: 40vw;           /* Responsive height, adjust as needed */
+    min-height: 180px;      /* Optional: ensures it's not too short */
+    max-height: 260px;      /* Optional: prevents it from being too tall */
+    object-fit: cover;      /* Fills the box, cropping if needed */
+    border-radius: 0;
+    background: #000;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
 /* ------------------------ Particle Background ------------------------ */
 #particles-js {
   position: absolute;
