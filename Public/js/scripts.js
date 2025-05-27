@@ -90,7 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
             Your browser does not support the video tag.
           </video>
         ` : ''}
-        <button class="btn btn-outline-info mt-2" onclick="window.closeExpandedCard()">✕ Close</button>
+        <button class="btn btn-outline-info mt-2" onclick="closeExpandedCard()">✕ Close</button>
       </div>`;
   }
 
@@ -102,6 +102,25 @@ window.addEventListener("DOMContentLoaded", () => {
   const carouselTrack = document.getElementById("carouselTrack");
   let scrollSpeed = 1;
   let scrollPaused = false;
+  let scrollPauseTimeout = null;
+
+  // Pause auto-scroll on user interaction
+  function pauseAutoScroll() {
+    scrollPaused = true;
+    if (scrollPauseTimeout) clearTimeout(scrollPauseTimeout);
+    // Resume after 1.5s of no interaction
+    scrollPauseTimeout = setTimeout(() => {
+      scrollPaused = false;
+    }, 1500);
+  }
+
+  // Mouse and touch events for pausing/resuming
+  if (carouselWrapper) {
+    carouselWrapper.addEventListener('mousedown', pauseAutoScroll);
+    carouselWrapper.addEventListener('touchstart', pauseAutoScroll);
+    carouselWrapper.addEventListener('wheel', pauseAutoScroll, { passive: true });
+    carouselWrapper.addEventListener('scroll', pauseAutoScroll, { passive: true });
+  }
 
   // Clone cards for seamless looping
   if (carouselTrack && carouselTrack.children.length > 0) {
@@ -116,7 +135,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function autoScrollCarousel() {
     if (!scrollPaused && carouselWrapper && carouselTrack) {
       carouselWrapper.scrollLeft += scrollSpeed;
-
       // If we've scrolled past the original set, reset to start
       if (carouselWrapper.scrollLeft >= carouselTrack.scrollWidth / 2) {
         carouselWrapper.scrollLeft = 0;

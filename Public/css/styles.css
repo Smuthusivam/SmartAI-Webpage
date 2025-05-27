@@ -86,14 +86,9 @@ body.noscroll {
 #feature-carousel-wrapper,
 .feature-carousel-wrapper {
   overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  width: 100%;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  position: relative;
-  scrollbar-width: none; /* Firefox */ scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: smooth;
+  cursor: grab;
 }
 
 #feature-carousel-wrapper::-webkit-scrollbar,
@@ -273,6 +268,25 @@ body.noscroll {
   font-size: 1.5rem;
   font-weight: 500;
   text-shadow: 0 0 8px #0ea5e9;
+}
+
+#expandedCardDetails {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 9999;
+  background: rgba(24, 28, 32, 0.92); /* semi-transparent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* Hide overlay when empty */
+#expandedCardDetails:empty {
+  display: none !important;
 }
 
 
