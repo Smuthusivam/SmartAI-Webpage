@@ -1,1 +1,1 @@
-web: npx serve -s Public
+web: node server.js
